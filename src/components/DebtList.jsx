@@ -17,7 +17,7 @@ const DebtList = () => {
   }, []);
 
   return (
-    <div className="max-w-md mx-auto mt-8 mb-11 hola">
+    <div className="max-w-md mx-auto mt-8 mb-11 hola p-4">
       <h2 className="text-2xl font-bold mb-4">Lista de Deudas</h2>
       <div className="space-y-4">
         {deudas.map(deuda => (
