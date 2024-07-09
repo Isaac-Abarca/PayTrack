@@ -1,0 +1,14 @@
+/* index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Be Vietnam Pro', 'Noto Sans', sans-serif;
+  margin: 0;
+}
+
+
+.hola {
+  margin-bottom: 7rem;
+}
