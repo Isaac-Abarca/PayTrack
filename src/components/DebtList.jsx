@@ -20,6 +20,7 @@ const DebtList = () => {
     <div className="max-w-md mx-auto mt-8 mb-11 hola p-4">
       <h2 className="text-2xl font-bold mb-4">Lista de Deudas</h2>
       <div className="space-y-4">
+        {console.log(deudas[1].id)}
         {deudas.map(deuda => (
           <DebtItem key={deuda.id} deuda={deuda} />
         ))}

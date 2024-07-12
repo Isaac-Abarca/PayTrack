@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 // src/components/DebtItem.jsx
 
+import { Link } from "react-router-dom";
+
 
 const DebtItem = ({ deuda }) => {
   return (
@@ -15,12 +17,13 @@ const DebtItem = ({ deuda }) => {
         </div>
         <div className="ml-4">
           <p className="text-gray-900 text-lg font-medium">Deudor: {deuda.deudor}</p>
-          <p className="text-gray-500">Fecha de Creación: {new Date(deuda.fechaCreacion.seconds * 1000).toLocaleDateString()}</p>
           <p className="text-gray-500">Acreedor: {deuda.acreedor} Monto Inicial: {deuda.montoInicial}</p>
           <p className="text-gray-500">Descripción: {deuda.descripcion}</p>
         </div>
       </div>
-      <button className="text-blue-600">Ver detalles</button>
+      <Link to="/debdetails">
+      <span className="text-blue-600">Ver detalles</span>
+      </Link>
     </div>
   );
 };
