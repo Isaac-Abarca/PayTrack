@@ -1,0 +1,39 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+.add-debt-btn-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.add-debt-btn {
+  display: flex;
+  min-width: 84px;
+  max-width: 480px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  height: 3rem;
+  padding: 0 1.25rem;
+  flex: 1;
+  background-color: #019863;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: normal;
+  letter-spacing: 0.015em;
+}
+
+.add-debt-btn span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
