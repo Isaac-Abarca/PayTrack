@@ -1,0 +1,51 @@
+.debt-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+.debt-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+}
+
+.debt-item-info {
+  display: flex;
+  align-items: center;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: #eeeff2;
+  border-radius: 12px;
+}
+
+.debt-details {
+  margin-left: 1rem;
+}
+
+.debt-title {
+  color: #1c1d22;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.debt-subtitle {
+  color: #3c3f4a;
+  font-size: 0.875rem;
+}
+
+.debt-link {
+  color: #607afb;
+  font-weight: 500;
+}
