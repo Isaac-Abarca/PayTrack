@@ -16,7 +16,7 @@ const DebtItem = ({ deuda }) => {
           <p className="debt-subtitle">Descripción: {deuda.descripcion}</p>
         </div>
       </div>
-      <Link to="/debdetails" className="debt-link">Ver detalles</Link>
+      <Link to={'/debtdetails'} className="debt-link">Ver detalles</Link>
     </div>
   );
 };

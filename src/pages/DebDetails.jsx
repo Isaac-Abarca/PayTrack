@@ -1,8 +1,14 @@
 
+import Header from '../components/Header';
+import NavBar from '../components/NavBar';
 
 const DebDetails = () => {
   return (
-    <div>DebDetails</div>
+    <div>
+      <Header/>
+      <h1>Hola</h1>
+      <NavBar />
+    </div>
   )
 }
 

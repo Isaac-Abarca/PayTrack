@@ -20,7 +20,7 @@ const App = () => {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/Home" element={<ProtectedRoute element={<Home />} />} />
             <Route path="/add-debt" element={<ProtectedRoute element={<AddDebt />} />} />
-            <Route path="/debt-details/:id" element={<ProtectedRoute element={<DebDetails />} />} />
+            <Route path="/debtdetails" element={<ProtectedRoute element={<DebDetails />} />} />
           </Routes>
         </div>
       </Router>
