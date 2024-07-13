@@ -52,7 +52,7 @@ const SignUp = () => {
           <p>Nombre completo</p>
           <input
             type="text"
-            placeholder="Ingresa tu nombre completo"
+            placeholder="JonhDoe"
             required
           />
         </label>
@@ -60,7 +60,7 @@ const SignUp = () => {
           <p>Email</p>
           <input
             type="email"
-            placeholder="Ingresa tu correo electrónico"
+            placeholder="JonhDoe@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -71,7 +71,7 @@ const SignUp = () => {
           <div className="password-container">
             <input
               type={showPassword ? 'text' : 'password'}
-              placeholder="Ingresa una contraseña"
+              placeholder="********"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -84,7 +84,7 @@ const SignUp = () => {
           <div className="password-container">
             <input
               type={showPassword ? 'text' : 'password'}
-              placeholder="Confirma tu contraseña"
+              placeholder="********"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
@@ -98,7 +98,7 @@ const SignUp = () => {
       </form>
       <div>
         <p className="signup-footer">
-          <Link to="/login">¿Ya tienes una cuenta? Iniciar sesión</Link>
+          <Link to="/">¿Ya tienes una cuenta? Iniciar sesión</Link>
         </p>
         <p className="signup-footer">
           <Link to="/forgot-password">Olvidé mi contraseña</Link>
