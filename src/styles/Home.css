@@ -1,8 +1,10 @@
 .home-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   min-height: 100dvh;
-  background-color: #ffffff;
+  background-color: white;
+  margin-bottom: 3rem;
 }
 
 .add-debt-btn-container {
@@ -15,24 +17,47 @@
   display: flex;
   min-width: 84px;
   max-width: 480px;
-  cursor: pointer;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  border-radius: 0.5rem;
+  border-radius: 9999px;
   height: 3rem;
   padding: 0 1.25rem;
   flex: 1;
   background-color: #019863;
-  color: #ffffff;
+  color: #f9fafb;
   font-size: 1rem;
   font-weight: bold;
-  line-height: normal;
-  letter-spacing: 0.015em;
+  text-align: center;
+  text-decoration: none;
 }
 
-.add-debt-btn span {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.debt-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 158px;
+  padding: 1.5rem;
+  border: 1px solid #d5d6dd;
+  border-radius: 0.75rem;
+}
+
+.summary-title {
+  color: #1c1d22;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.summary-value {
+  color: #1c1d22;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 2rem;
 }
