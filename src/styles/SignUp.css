@@ -1,0 +1,132 @@
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  background-color: #f9fafa;
+  font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
+}
+
+.signup-header {
+  padding: 1rem;
+}
+
+.signup-header .header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.signup-header .header-top h2 {
+  color: #1c1d22;
+  font-size: 1.125rem;
+  font-weight: bold;
+  text-align: center;
+  flex: 1;
+  padding-right: 3rem;
+}
+
+.signup-header .header-top svg {
+  width: 24px;
+  height: 24px;
+}
+
+.signup-title {
+  color: #1c1d22;
+  font-size: 32px;
+  font-weight: bold;
+  padding: 1rem 1rem 0.75rem;
+  margin: 0;
+  text-align: left;
+}
+
+.signup-form {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.signup-form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.signup-form p {
+  color: #1c1d22;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.signup-form input {
+  border: 1px solid #d5d6dd;
+  background-color: #ffffff;
+  height: 56px;
+  padding: 15px;
+  font-size: 1rem;
+  border-radius: 12px;
+  color: #1c1d22;
+}
+
+.signup-form .password-container {
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.signup-form .password-container input {
+  border-radius: 12px 0 0 12px;
+  border-right: none;
+  flex: 1;
+}
+
+.signup-form .password-container div {
+  padding-right: 15px;
+  background-color: #ffffff;
+  border: 1px solid #d5d6dd;
+  border-left: none;
+  border-radius: 0 12px 12px 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.signup-form .password-container div svg {
+  color: #3c3f4a;
+}
+
+.signup-button {
+  background-color: #607afb;
+  color: #f9fafa;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  height: 48px;
+  border-radius: 24px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 480px;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-footer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #3c3f4a;
+  margin-bottom: 0.5rem;
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  color: red;
+  font-size: 0.875rem;
+}
