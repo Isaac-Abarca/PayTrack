@@ -1,0 +1,77 @@
+/* src/styles/SettingsModal.css */
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: rgba(20, 20, 20, 0.4);
+  z-index: 1001;
+}
+
+.modal-background {
+  background: #f9fafa;
+  width: 100%;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  background: #f9fafa;
+  padding: 16px;
+}
+
+.modal-close-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  width: 100%;
+}
+
+.close-icon {
+  height: 1px;
+  width: 36px;
+  border-radius: 10px;
+  background-color: #d5d6dd;
+}
+
+.modal-body {
+  flex: 1;
+}
+
+.modal-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #f9fafa;
+  min-height: 56px;
+}
+
+.modal-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eeeff2;
+  border-radius: 8px;
+  height: 40px;
+  width: 40px;
+}
+
+.modal-item-text {
+  flex: 1;
+  margin-left: 16px;
+  font-size: 16px;
+  color: #1c1d22;
+}
+
+.modal-item-path {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
