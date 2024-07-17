@@ -1,86 +1,154 @@
-// src/components/AddDebt.jsx
-
 import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../firebaseConfig";
+import { db, storage } from "../firebaseConfig";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import "../styles/AddDebt.css";
 
 const AddDebt = () => {
   const [deudor, setDeudor] = useState("");
   const [acreedor, setAcreedor] = useState("");
   const [montoInicial, setMontoInicial] = useState("");
   const [descripcion, setDescripcion] = useState("");
+  const [comprobante, setComprobante] = useState(null);
+  const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState("");
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type.startsWith("image/")) {
+      setSelectedImage(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreviewUrl(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setSelectedImage(null);
+    setImagePreviewUrl("");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
+      let fileURL = "";
+      if (comprobante) {
+        const storageRef = ref(storage, `comprobantes/${comprobante.name}`);
+        const snapshot = await uploadBytes(storageRef, comprobante);
+        fileURL = await getDownloadURL(snapshot.ref);
+      }
+
       await addDoc(collection(db, "deudas"), {
         deudor,
         acreedor,
         montoInicial: parseFloat(montoInicial),
         descripcion,
-        fechaCreacion: new Date()
+        fechaCreacion: new Date(),
+        comprobante: fileURL,
       });
+
       setDeudor("");
       setAcreedor("");
       setMontoInicial("");
       setDescripcion("");
+      setComprobante(null);
       alert('Deuda agregada exitosamente');
     } catch (error) {
       console.error("Error adding document: ", error);
       alert('Error al agregar la deuda: ' + error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8">
-      <h2 className="text-2xl font-bold mb-4">Agregar Deuda</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Deudor</label>
+    <form onSubmit={handleSubmit}>
+      <div className="input-container">
+        <label className="input-label">
+          <p className="input-title">Deudor</p>
           <input
             type="text"
             value={deudor}
             onChange={(e) => setDeudor(e.target.value)}
+            placeholder="Ingrese el nombre del deudor"
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+            className="form-input"
           />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Acreedor</label>
+        </label>
+      </div>
+      <div className="input-container">
+        <label className="input-label">
+          <p className="input-title">Acreedor</p>
           <input
             type="text"
             value={acreedor}
             onChange={(e) => setAcreedor(e.target.value)}
+            placeholder="Ingrese el nombre del acreedor"
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+            className="form-input"
           />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Monto Inicial</label>
+        </label>
+      </div>
+      <div className="input-container">
+        <label className="input-label">
+          <p className="input-title">Monto Inicial</p>
           <input
             type="number"
             value={montoInicial}
             onChange={(e) => setMontoInicial(e.target.value)}
+            placeholder="Ingrese el monto inicial"
             required
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+            className="form-input"
           />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Descripción</label>
-          <input
-            type="text"
+        </label>
+      </div>
+      <div className="input-container">
+        <label className="input-label">
+          <p className="input-title">Descripción</p>
+          <textarea
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+            placeholder="Ingrese una descripción"
+            className="form-input textarea"
           />
+        </label>
+      </div>
+      <div>
+        <div className="input-container">
+          {!imagePreviewUrl && (
+            <label className="input-label">
+              <p className="input-title">Adjuntar Comprobante</p>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="form-input"
+              />
+            </label>
+          )}
+          {imagePreviewUrl && (
+            <div>
+              <p className="input-title">Comprobante adjunto</p>
+              <img src={imagePreviewUrl} alt="Preview" style={{ maxWidth: '100%', height: 'auto' }} />
+              <button type="button" onClick={handleRemoveImage} className="mt-2 text-red-500">
+                Eliminar imagen
+              </button>
+            </div>
+          )}
         </div>
-        <div>
-          <button type="submit" className="w-full bg-green-600 text-white py-2 px-4 rounded-md">
-            Agregar Deuda
-          </button>
-        </div>
-      </form>
-    </div>
+      </div>
+      <div className="add-debt-btn-container">
+        <button type="submit" className="add-debt-btn">
+          {loading ? "Guardando..." : "Agregar Deuda"}
+        </button>
+      </div>
+    </form>
   );
 };
 
