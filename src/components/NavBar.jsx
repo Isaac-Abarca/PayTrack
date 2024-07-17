@@ -12,23 +12,27 @@ const NavBar = () => {
     <div className="navbar">
       <Link to="/home" className="nav-item active">
         <HomeIcon />
-        <p>Inicio</p>
+         {/** <p>Inicio</p>*/}
       </Link>
       <Link to="/search" className="nav-item inactive">
         <SearchIcon />
-        <p>Buscar</p>
+        {/**<p>Buscar</p> */}
+        
       </Link>
       <Link to="/add-debt" className="nav-item inactive">
         <AddIcon />
-        <p>Agregar</p>
+        {/**<p>Agregar</p> */}
+        
       </Link>
       <Link to="/notifications" className="nav-item inactive">
         <BellIcon />
-        <p>Notificaciones</p>
+        {/** <p>Notificaciones</p>*/}
+        
       </Link>
       <Link to="/chat" className="nav-item inactive">
         <ChatIcon />
-        <p>Chat</p>
+        {/** <p>Chat</p> */}
+        
       </Link>
     </div>
   );
