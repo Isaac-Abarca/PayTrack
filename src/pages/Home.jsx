@@ -1,5 +1,4 @@
 // src/components/Home.jsx
-import { Link } from 'react-router-dom';
 import DebtList from '../components/DebtList';
 import NavBar from '../components/NavBar';
 import Header from '../components/Header';
@@ -9,12 +8,6 @@ const Home = () => {
   return (
     <div className="home-container">
       <Header />
-      <div className="add-debt-btn-container">
-        <Link to="/add-debt" className="add-debt-btn">
-          <span className="truncate">AGREGAR DEUDA</span>
-        </Link>
-
-      </div>
       <div className="debt-summary">
         <div className="summary-item">
           <p className="summary-title">Total Adeudado</p>

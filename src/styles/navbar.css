@@ -7,10 +7,10 @@
   justify-content: space-around;
   align-items: center;
   position: fixed;
-  bottom: 0; 
+  bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1000; 
+  z-index: 1000;
 }
 
 .nav-item {
@@ -19,6 +19,7 @@
   align-items: center;
   text-decoration: none;
 }
+
 
 .nav-item svg {
   width: 24px;
@@ -42,4 +43,19 @@
 
 .nav-item.inactive {
   color: #3c3f4a;
+}
+
+.crear {
+  display: flex;
+  width: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  height: 3rem;
+  background-color: #617bfc;
+  color: #f9fafb;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
 }

@@ -1,7 +1,6 @@
 .home-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   min-height: 100dvh;
   background-color: white;
   margin-bottom: 3rem;
@@ -13,23 +12,7 @@
   padding: 1rem;
 }
 
-.add-debt-btn {
-  display: flex;
-  min-width: 84px;
-  max-width: 480px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 9999px;
-  height: 3rem;
-  padding: 0 1.25rem;
-  flex: 1;
-  background-color: #019863;
-  color: #f9fafb;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-}
+
 
 .debt-summary {
   display: flex;
