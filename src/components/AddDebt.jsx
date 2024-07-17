@@ -9,11 +9,9 @@ const AddDebt = () => {
   const [acreedor, setAcreedor] = useState("");
   const [montoInicial, setMontoInicial] = useState("");
   const [descripcion, setDescripcion] = useState("");
-  const [comprobante, setComprobante] = useState(null);
-  const [loading, setLoading] = useState(false);
-  // eslint-disable-next-line no-unused-vars
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -24,6 +22,8 @@ const AddDebt = () => {
         setImagePreviewUrl(reader.result);
       };
       reader.readAsDataURL(file);
+    } else {
+      alert("Por favor, seleccione una imagen.");
     }
   };
 
@@ -38,9 +38,9 @@ const AddDebt = () => {
 
     try {
       let fileURL = "";
-      if (comprobante) {
-        const storageRef = ref(storage, `comprobantes/${comprobante.name}`);
-        const snapshot = await uploadBytes(storageRef, comprobante);
+      if (selectedImage) {
+        const storageRef = ref(storage, `comprobantes/${selectedImage.name}`);
+        const snapshot = await uploadBytes(storageRef, selectedImage);
         fileURL = await getDownloadURL(snapshot.ref);
       }
 
@@ -57,7 +57,8 @@ const AddDebt = () => {
       setAcreedor("");
       setMontoInicial("");
       setDescripcion("");
-      setComprobante(null);
+      setSelectedImage(null);
+      setImagePreviewUrl("");
       alert('Deuda agregada exitosamente');
     } catch (error) {
       console.error("Error adding document: ", error);
@@ -153,3 +154,4 @@ const AddDebt = () => {
 };
 
 export default AddDebt;
+
