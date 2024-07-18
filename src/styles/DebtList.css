@@ -1,13 +1,7 @@
 .debt-list {
   max-width: 28rem;
-  margin: 2rem auto;
+  margin: auto;
   padding: 1rem;
-}
-
-.debt-list-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
 }
 
 .debt-list-items {

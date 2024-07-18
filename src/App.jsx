@@ -8,6 +8,7 @@ import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import ListDeb from './pages/ListDeb';
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/Home" element={<ProtectedRoute element={<Home />} />} />
             <Route path="/add-debt" element={<ProtectedRoute element={<AddDebt />} />} />
             <Route path="/debtdetails" element={<ProtectedRoute element={<DebDetails />} />} />
+            <Route path="/listdeb" element={<ProtectedRoute element={<ListDeb />} />} />
           </Routes>
         </div>
       </Router>
