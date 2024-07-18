@@ -3,9 +3,10 @@ import { useState } from 'react';
 import ListIcon from '../assets/ListIcon';
 import GearIcon from '../assets/GearIcon';
 import SettingsModal from './SettingsModal';
+import PropTypes from 'prop-types';
 import '../styles/Header.css';
 
-const Header = () => {
+const Header = ({ title }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleGearClick = () => {
@@ -21,7 +22,7 @@ const Header = () => {
       <div className="header-icon">
         <ListIcon />
       </div>
-      <h2 className="header-title">Gestión de Deudas</h2>
+      <h2 className="header-title">{title}</h2>
       <div className="header-icon" onClick={handleGearClick}>
         <GearIcon />
       </div>
@@ -30,5 +31,12 @@ const Header = () => {
   );
 };
 
-export default Header;
+Header.defaultProps = {
+  title: "Gestión de Deudas",
+};
 
+Header.propTypes = {
+  title: PropTypes.string,
+};
+
+export default Header;
