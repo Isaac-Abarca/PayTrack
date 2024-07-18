@@ -1,9 +1,10 @@
+/* AddDebt.css */
 
 .input-container {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 1rem;
+  padding: .5rem 1rem;
 }
 
 .input-label {
@@ -62,4 +63,16 @@
   font-weight: bold;
   text-align: center;
   text-decoration: none;
+}
+
+.input-error-message {
+  color: #e53e3e;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  min-height: 1.25rem; 
+  visibility: hidden;  
+}
+
+.input-error-message.visible {
+  visibility: visible; 
 }
