@@ -2,6 +2,9 @@ import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { db, storage } from "../firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import toast from 'react-hot-toast';
+import ValidatedInput from '../components/ValidatedInput';
+import ValidatedTextarea from '../components/ValidatedTextarea';
 import "../styles/AddDebt.css";
 
 const AddDebt = () => {
@@ -12,6 +15,7 @@ const AddDebt = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -23,7 +27,10 @@ const AddDebt = () => {
       };
       reader.readAsDataURL(file);
     } else {
-      alert("Por favor, seleccione una imagen.");
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        file: "Por favor, seleccione una imagen."
+      }));
     }
   };
 
@@ -32,8 +39,22 @@ const AddDebt = () => {
     setImagePreviewUrl("");
   };
 
+  const validate = () => {
+    const newErrors = {};
+    if (!deudor) newErrors.deudor = "El nombre del deudor es requerido.";
+    if (!acreedor) newErrors.acreedor = "El nombre del acreedor es requerido.";
+    if (!montoInicial) newErrors.montoInicial = "El monto inicial es requerido.";
+    if (!descripcion) newErrors.descripcion = "La descripción es requerida.";
+    return newErrors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
     setLoading(true);
 
     try {
@@ -53,16 +74,21 @@ const AddDebt = () => {
         comprobante: fileURL,
       });
 
+      // Clear form fields
       setDeudor("");
       setAcreedor("");
       setMontoInicial("");
       setDescripcion("");
       setSelectedImage(null);
       setImagePreviewUrl("");
-      alert('Deuda agregada exitosamente');
+
+      // Clear errors
+      setErrors({});
+      
+      toast.success('Deuda agregada exitosamente');
     } catch (error) {
       console.error("Error adding document: ", error);
-      alert('Error al agregar la deuda: ' + error.message);
+      toast.error('Error al agregar la deuda: ' + error.message);
     } finally {
       setLoading(false);
     }
@@ -70,56 +96,35 @@ const AddDebt = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="input-container">
-        <label className="input-label">
-          <p className="input-title">Deudor</p>
-          <input
-            type="text"
-            value={deudor}
-            onChange={(e) => setDeudor(e.target.value)}
-            placeholder="Ingrese el nombre del deudor"
-            required
-            className="form-input"
-          />
-        </label>
-      </div>
-      <div className="input-container">
-        <label className="input-label">
-          <p className="input-title">Acreedor</p>
-          <input
-            type="text"
-            value={acreedor}
-            onChange={(e) => setAcreedor(e.target.value)}
-            placeholder="Ingrese el nombre del acreedor"
-            required
-            className="form-input"
-          />
-        </label>
-      </div>
-      <div className="input-container">
-        <label className="input-label">
-          <p className="input-title">Monto Inicial</p>
-          <input
-            type="number"
-            value={montoInicial}
-            onChange={(e) => setMontoInicial(e.target.value)}
-            placeholder="Ingrese el monto inicial"
-            required
-            className="form-input"
-          />
-        </label>
-      </div>
-      <div className="input-container">
-        <label className="input-label">
-          <p className="input-title">Descripción</p>
-          <textarea
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
-            placeholder="Ingrese una descripción"
-            className="form-input textarea"
-          />
-        </label>
-      </div>
+      <ValidatedInput
+        label="Deudor"
+        value={deudor}
+        onChange={(e) => setDeudor(e.target.value)}
+        placeholder="Ingrese el nombre del deudor"
+        error={errors.deudor}
+      />
+      <ValidatedInput
+        label="Acreedor"
+        value={acreedor}
+        onChange={(e) => setAcreedor(e.target.value)}
+        placeholder="Ingrese el nombre del acreedor"
+        error={errors.acreedor}
+      />
+      <ValidatedInput
+        label="Monto Inicial"
+        type="number"
+        value={montoInicial}
+        onChange={(e) => setMontoInicial(e.target.value)}
+        placeholder="Ingrese el monto inicial"
+        error={errors.montoInicial}
+      />
+      <ValidatedTextarea
+        label="Descripción"
+        value={descripcion}
+        onChange={(e) => setDescripcion(e.target.value)}
+        placeholder="Ingrese una descripción"
+        error={errors.descripcion}
+      />
       <div>
         <div className="input-container">
           {!imagePreviewUrl && (
@@ -131,6 +136,7 @@ const AddDebt = () => {
                 onChange={handleFileChange}
                 className="form-input"
               />
+              {errors.file && <p className="input-error-message">{errors.file}</p>}
             </label>
           )}
           {imagePreviewUrl && (
@@ -154,4 +160,3 @@ const AddDebt = () => {
 };
 
 export default AddDebt;
-

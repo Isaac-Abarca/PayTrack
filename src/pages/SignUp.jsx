@@ -1,31 +1,34 @@
+// src/components/SignUp.jsx
+
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { auth } from '../firebaseConfig';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useAuth } from '../contexts/AuthContext';
+import toast from 'react-hot-toast';
 import EyeIcon from '../assets/EyeIcon';
 import '../styles/SignUp.css';
-
-
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [fullName, setFullName] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
+  const { register } = useAuth();
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      setError('Las contraseñas no coinciden');
+      toast.error('Las contraseñas no coinciden');
       return;
     }
+    const [firstName, lastName] = fullName.split(' ');
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      await register(email, password, firstName, lastName);
+      toast.success('Registro exitoso');
       navigate('/');
     } catch (error) {
-      setError('Error al registrarse: ' + error.message);
+      toast.error('Error al registrarse: ' + error.message);
     }
   };
 
@@ -47,12 +50,13 @@ const SignUp = () => {
         <h1 className="signup-title">Registro</h1>
       </div>
       <form onSubmit={handleSignUp} className="signup-form">
-        {error && <p className="error">{error}</p>}
         <label>
           <p>Nombre completo</p>
           <input
             type="text"
-            placeholder="JonhDoe"
+            placeholder="John Doe"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
             required
           />
         </label>
@@ -60,7 +64,7 @@ const SignUp = () => {
           <p>Email</p>
           <input
             type="email"
-            placeholder="JonhDoe@example.com"
+            placeholder="JohnDoe@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
