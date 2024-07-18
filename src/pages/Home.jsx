@@ -1,13 +1,10 @@
 // src/components/Home.jsx
-import DebtList from '../components/DebtList';
-import NavBar from '../components/NavBar';
-import Header from '../components/Header';
 import '../styles/Home.css';
+import Layout from '../components/Layout';
 
 const Home = () => {
   return (
-    <div className="home-container">
-      <Header />
+    <Layout >
       <div className="debt-summary">
         <div className="summary-item">
           <p className="summary-title">Total Adeudado</p>
@@ -22,9 +19,7 @@ const Home = () => {
           <p className="summary-value">8</p>
         </div>
       </div>
-      <DebtList />
-      <NavBar />
-    </div>
+    </Layout>
   );
 };
 

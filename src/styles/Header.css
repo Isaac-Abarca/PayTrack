@@ -2,8 +2,12 @@
   display: flex;
   align-items: center;
   padding: 1rem;
-  padding-bottom: 0.5rem;
   justify-content: space-between;
+  position: fixed; /* Fijar la posición */
+  top: 0; /* Fijar en la parte superior */
+  width: 100%; /* Abarcar todo el ancho */
+  background-color: #fff; /* Fondo blanco para que no se superponga con el contenido */
+  z-index: 1000; /* Asegurarse de que esté por encima de otros elementos */
 }
 
 .header-title {
@@ -23,3 +27,4 @@
   justify-content: center;
   cursor: pointer;
 }
+

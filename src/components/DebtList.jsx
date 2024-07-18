@@ -17,7 +17,6 @@ const DebtList = () => {
 
   return (
     <div className="debt-list">
-      <h2 className="debt-list-title">Lista de Deudas</h2>
       <div className="debt-items">
         {deudas.map(deuda => (
           <DebtItem key={deuda.id} deuda={deuda} />

@@ -1,0 +1,10 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+.content-container {
+    height: auto;
+    padding: 3.5rem 0;
+}
