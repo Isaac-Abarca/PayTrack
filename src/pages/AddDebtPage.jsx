@@ -7,9 +7,8 @@ import NavBar from '../components/NavBar';
 const AddDebtPage = () => {
   return (
       <div>
-      <Header />
+      <Header title={"Agregar Nueva Deuda"} />
         <div className="min-h-screen pb-20">
-          <h1 className="text-center text-3xl font-bold pt-4">Agregar Nueva Deuda</h1>
           <AddDebt />
         </div>
         <NavBar />
