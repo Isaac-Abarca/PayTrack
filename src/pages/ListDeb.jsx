@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 
 const ListDeb = () => {
   return (
-    <Layout>
+    <Layout title={"Deudas"}>
         <DebtList/>
     </Layout>
   )

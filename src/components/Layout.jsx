@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
-
 import Header from './Header';
 import Navbar from './NavBar';
 import '../styles/Layout.css';
 
-const Layout = ({ children, title}) => {
+const Layout = ({ children, title }) => {
   return (
     <div className="layout">
       <Header title={title} />
