@@ -1,28 +1,33 @@
 /* eslint-disable react/prop-types */
 // src/contexts/DebtContext.js
 import { createContext, useContext, useState, useEffect } from 'react';
-import { collection, getDocs, onSnapshot } from 'firebase/firestore';
+import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
+import { useAuth } from './AuthContext';
 
 const DebtContext = createContext();
 
 export const DebtProvider = ({ children }) => {
+  const { currentUser } = useAuth();
   const [deudas, setDeudas] = useState([]);
 
   useEffect(() => {
+    if (!currentUser) return;
+
     const fetchDeudas = async () => {
-      const querySnapshot = await getDocs(collection(db, 'deudas'));
+      const q = query(collection(db, 'deudas'), where('userId', '==', currentUser.uid));
+      const querySnapshot = await getDocs(q);
       setDeudas(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
     };
 
-    const unsubscribe = onSnapshot(collection(db, 'deudas'), (snapshot) => {
+    const unsubscribe = onSnapshot(query(collection(db, 'deudas'), where('userId', '==', currentUser.uid)), (snapshot) => {
       setDeudas(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
     });
 
     fetchDeudas();
 
     return () => unsubscribe();
-  }, []);
+  }, [currentUser]);
 
   return (
     <DebtContext.Provider value={{ deudas, setDeudas }}>

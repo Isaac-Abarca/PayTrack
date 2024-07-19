@@ -1,13 +1,14 @@
+// src/components/AddDebt.jsx
 import { useState } from "react";
-import { collection, addDoc } from "firebase/firestore";
-import { db, storage } from "../firebaseConfig";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { useAuth } from "../contexts/AuthContext";
+import { uploadFile, addDebt } from "../utils/firebaseUtils";
 import toast from 'react-hot-toast';
 import ValidatedInput from '../components/ValidatedInput';
 import ValidatedTextarea from '../components/ValidatedTextarea';
 import "../styles/AddDebt.css";
 
 const AddDebt = () => {
+  const { currentUser } = useAuth();
   const [deudor, setDeudor] = useState("");
   const [acreedor, setAcreedor] = useState("");
   const [montoInicial, setMontoInicial] = useState("");
@@ -60,18 +61,17 @@ const AddDebt = () => {
     try {
       let fileURL = "";
       if (selectedImage) {
-        const storageRef = ref(storage, `comprobantes/${selectedImage.name}`);
-        const snapshot = await uploadBytes(storageRef, selectedImage);
-        fileURL = await getDownloadURL(snapshot.ref);
+        fileURL = await uploadFile(selectedImage, `comprobantes/${selectedImage.name}`);
       }
 
-      await addDoc(collection(db, "deudas"), {
+      await addDebt({
         deudor,
         acreedor,
         montoInicial: parseFloat(montoInicial),
         descripcion,
         fechaCreacion: new Date(),
         comprobante: fileURL,
+        userId: currentUser.uid,
       });
 
       // Clear form fields
@@ -160,3 +160,4 @@ const AddDebt = () => {
 };
 
 export default AddDebt;
+
