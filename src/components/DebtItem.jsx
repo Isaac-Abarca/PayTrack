@@ -5,7 +5,7 @@ import ArrowIcon from '../assets/ArrowIcon';
 
 const DebtItem = ({ deuda }) => {
   return (
-    <div className="debt-item">
+    <Link to={'/debtdetails'} className="debt-item">
       <div className="debt-item-info">
         <div className="debt-details">
           <p className="debt-title">{deuda.deudor}</p>
@@ -13,8 +13,8 @@ const DebtItem = ({ deuda }) => {
           <p className="debt-subtitle"> {deuda.descripcion}</p>
         </div>
       </div>
-      <Link to={'/debtdetails'} className="debt-link"><ArrowIcon /></Link>
-    </div>
+      <span  className="debt-link"><ArrowIcon /></span>
+    </Link>
   );
 };
 
