@@ -9,24 +9,27 @@ import Login from './pages/Login';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import ListDeb from './pages/ListDeb';
+import { DebtProvider } from './contexts/DebtContext';
 
 
 const App = () => {
   return (
     <AuthProvider>
-      <Router>
-        <div className="App">
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/Home" element={<ProtectedRoute element={<Home />} />} />
-            <Route path="/add-debt" element={<ProtectedRoute element={<AddDebt />} />} />
-            <Route path="/debtdetails" element={<ProtectedRoute element={<DebDetails />} />} />
-            <Route path="/listdeb" element={<ProtectedRoute element={<ListDeb />} />} />
-          </Routes>
-        </div>
-      </Router>
+      <DebtProvider>
+        <Router>
+          <div className="App">
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/Home" element={<ProtectedRoute element={<Home />} />} />
+              <Route path="/add-debt" element={<ProtectedRoute element={<AddDebt />} />} />
+              <Route path="/debtdetails" element={<ProtectedRoute element={<DebDetails />} />} />
+              <Route path="/listdeb" element={<ProtectedRoute element={<ListDeb />} />} />
+            </Routes>
+          </div>
+        </Router>
+      </DebtProvider>
     </AuthProvider>
   );
 };

@@ -1,19 +1,10 @@
-import { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebaseConfig';
+// src/components/DebtList.jsx
 import DebtItem from './DebtItem';
-import '../styles/DebtList.css'
+import { useDebts } from '../contexts/DebtContext';
+import '../styles/DebtList.css';
 
 const DebtList = () => {
-  const [deudas, setDeudas] = useState([]);
-
-  useEffect(() => {
-    const fetchDeudas = async () => {
-      const querySnapshot = await getDocs(collection(db, 'deudas'));
-      setDeudas(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-    };
-    fetchDeudas();
-  }, []);
+  const { deudas } = useDebts();
 
   return (
     <div className="debt-list">
@@ -27,6 +18,7 @@ const DebtList = () => {
 };
 
 export default DebtList;
+
 
 
 
