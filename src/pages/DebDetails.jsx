@@ -7,14 +7,17 @@ import Layout from '../components/Layout';
 import DebtInfoRow from '../components/DebtInfoRow';
 import PaymentItem from '../components/PaymentItem';
 import AddPaymentForm from '../components/AddPaymentForm';
+import Loading from '../components/Loading';
 
 const DebtDetails = () => {
   const { id } = useParams();
   const [deuda, setDeuda] = useState(null);
   const [showAddPaymentForm, setShowAddPaymentForm] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchDeuda = async () => {
+      setLoading(true);
       const docRef = doc(db, 'deudas', id);
       const docSnap = await getDoc(docRef);
 
@@ -23,13 +26,18 @@ const DebtDetails = () => {
       } else {
         console.log('No such document!');
       }
+      setLoading(false);
     };
 
     fetchDeuda();
   }, [id]);
 
+  if (loading) {
+    return <Loading />;
+  }
+
   if (!deuda) {
-    return <div>Loading...</div>;
+    return <div>No se encontró la deuda.</div>;
   }
 
   return (
@@ -63,4 +71,5 @@ const DebtDetails = () => {
 };
 
 export default DebtDetails;
+
 
