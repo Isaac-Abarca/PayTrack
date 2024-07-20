@@ -32,33 +32,13 @@
 }
 
 .add-payment-container {
-  padding-top: 2rem;
-}
-
-.add-payment-btn {
-  display: flex;
-  min-width: 84px;
-  max-width: 480px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 0.75rem;
-  height: 3rem;
-  padding: 0 1.25rem;
-  flex: 1;
-  background-color: #607afb;
-  color: #f9fafa;
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 0 auto;
+  padding-top: 1rem;
 }
 
 .payments-title {
   color: #1c1d22;
   font-size: 1.125rem;
   font-weight: bold;
-  padding: 1rem 0 0.5rem;
   text-align: center;
 }
 

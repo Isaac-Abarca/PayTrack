@@ -1,18 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import '../styles/DebtDetails.css';
 import Layout from '../components/Layout';
 import DebtInfoRow from '../components/DebtInfoRow';
 import PaymentItem from '../components/PaymentItem';
-import AddPaymentForm from '../components/AddPaymentForm';
 import Loading from '../components/Loading';
 
 const DebtDetails = () => {
   const { id } = useParams();
   const [deuda, setDeuda] = useState(null);
-  const [showAddPaymentForm, setShowAddPaymentForm] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,7 +20,7 @@ const DebtDetails = () => {
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        setDeuda(docSnap.data());
+        setDeuda({ id: docSnap.id, ...docSnap.data() });
       } else {
         console.log('No such document!');
       }
@@ -51,19 +49,16 @@ const DebtDetails = () => {
           <DebtInfoRow label="Descripción" value={deuda.descripcion} />
         </div>
         <div className="btn-container">
-          <button className="btn-default">Agregar Pago</button>
+          <Link to={`/debts/${id}/payments`} className="btn-default">Agregar Pago</Link>
         </div>
         <div className="add-payment-container">
-          {showAddPaymentForm && (
-            <AddPaymentForm debtId={id} onClose={() => setShowAddPaymentForm(false)} />
-          )}
           <h3 className="payments-title">Pagos Registrados</h3>
-          {deuda.payments?.map((payment, index) => (
+          {deuda.pagos?.map((payment, index) => (
             <PaymentItem
               key={index}
-              date={payment.date}
-              amount={payment.amount}
-              receiptImageUrl={payment.receiptImageUrl}
+              date={payment.fechaPago}
+              amount={payment.montoPago}
+              receiptImageUrl={payment.comprobante}
             />
           ))}
         </div>
@@ -73,5 +68,7 @@ const DebtDetails = () => {
 };
 
 export default DebtDetails;
+
+
 
 

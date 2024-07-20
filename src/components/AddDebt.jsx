@@ -72,6 +72,7 @@ const AddDebt = () => {
         fechaCreacion: new Date(),
         comprobante: fileURL,
         userId: currentUser.uid,
+        pagos: [] // Asegurar que se crea el array de pagos vacío
       });
 
       // Clear form fields
@@ -160,4 +161,3 @@ const AddDebt = () => {
 };
 
 export default AddDebt;
-
