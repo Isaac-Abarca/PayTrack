@@ -3,9 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
   font-family: 'Be Vietnam Pro', 'Noto Sans', sans-serif;
   margin: 0;
+  padding: 0;
+  min-height: 100dvh;
+  
 }
 
 /* Estilos para motores Webkit y blink (Chrome, Safari, Opera...) */

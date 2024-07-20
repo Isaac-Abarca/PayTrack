@@ -1,14 +1,10 @@
-
-import Header from '../components/Header';
-import NavBar from '../components/NavBar';
+import Layout from '../components/Layout';
 
 const DebDetails = () => {
   return (
-    <div>
-      <Header title={"Deudas"}/>
+    <Layout title={"Deudas"}>
       <h1>Hola</h1>
-      <NavBar />
-    </div>
+    </Layout>
   )
 }
 

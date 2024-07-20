@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <AuthProvider>
       <ToastProvider>
         <App />
-      </ToastProvider>,
+      </ToastProvider>
     </AuthProvider>
   </React.StrictMode>
 );

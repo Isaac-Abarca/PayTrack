@@ -1,7 +1,7 @@
 .login-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100dvh;
   background-color: #f9fafa;
   justify-content: space-between;
   font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;

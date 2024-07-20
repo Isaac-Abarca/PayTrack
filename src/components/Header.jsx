@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 // src/components/Header.jsx
 import { useState } from 'react';
-import ListIcon from '../assets/ListIcon';
+import CreditCardIcon from '../assets/CreditCardIcon';
 import GearIcon from '../assets/GearIcon';
 import SettingsModal from './SettingsModal';
 import '../styles/Header.css';
@@ -20,7 +20,7 @@ const Header = ({ title = "Gestor de deudas"  }) => {
   return (
     <div className="header">
       <div className="header-icon">
-        <ListIcon />
+        <CreditCardIcon/>
       </div>
       <h2 className="header-title">{title}</h2>
       <div className="header-icon" onClick={handleGearClick}>
