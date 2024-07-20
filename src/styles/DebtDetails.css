@@ -1,0 +1,112 @@
+.debt-details-container {
+  padding: 1rem;
+}
+
+
+.debt-info {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.debt-info-row {
+  display: flex;
+  justify-content: start;
+  border-bottom: 1px solid #d5d6dd;
+  padding: 1rem 0;
+}
+
+.info-label {
+  color: #3c3f4a;
+  font-size: 0.875rem;
+  font-weight: normal;
+  flex: 0 0 33.33%;
+  text-align: left;
+}
+
+.info-value {
+  color: #1c1d22;
+  font-size: 0.875rem;
+  font-weight: normal;
+  flex: 1;
+  text-align: left;
+}
+
+.add-payment-container {
+  padding-top: 2rem;
+}
+
+.add-payment-btn {
+  display: flex;
+  min-width: 84px;
+  max-width: 480px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  height: 3rem;
+  padding: 0 1.25rem;
+  flex: 1;
+  background-color: #607afb;
+  color: #f9fafa;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.payments-title {
+  color: #1c1d22;
+  font-size: 1.125rem;
+  font-weight: bold;
+  padding: 1rem 0 0.5rem;
+  text-align: center;
+}
+
+.payment-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #f9fafa;
+  padding: 1rem;
+  min-height: 4.5rem;
+  justify-content: space-between;
+  border-top: 1px solid #d5d6dd;
+}
+
+.payment-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.payment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeff2;
+  border-radius: 0.75rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+.payment-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-date {
+  color: #1c1d22;
+  font-size: 1rem;
+  font-weight: medium;
+}
+
+.payment-amount {
+  color: #3c3f4a;
+  font-size: 0.875rem;
+  font-weight: normal;
+}
+
+.spacer {
+  height: 1.25rem;
+  background-color: #f9fafa;
+}
