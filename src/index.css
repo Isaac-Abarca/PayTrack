@@ -12,6 +12,30 @@ body {
   
 }
 
+.btn-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.btn-default {
+  display: flex;
+  align-items: center;
+  min-width: 84px;
+  max-width: 480px;
+  justify-content: center;
+  border-radius: 9999px;
+  height: 3rem;
+  padding: 0 1.25rem;
+  flex: 1;
+  background-color: #607afb;
+  color: #f9fafb;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+}
+
 /* Estilos para motores Webkit y blink (Chrome, Safari, Opera...) */
 body::-webkit-scrollbar {
   -webkit-appearance: none;

@@ -150,8 +150,8 @@ const AddDebt = () => {
           )}
         </div>
       </div>
-      <div className="add-debt-btn-container">
-        <button type="submit" className="add-debt-btn">
+      <div className="btn-container">
+        <button type="submit" className="btn-default">
           {loading ? "Guardando..." : "Agregar Deuda"}
         </button>
       </div>

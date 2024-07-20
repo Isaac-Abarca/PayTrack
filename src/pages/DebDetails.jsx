@@ -50,8 +50,10 @@ const DebtDetails = () => {
           <DebtInfoRow label="Monto Actual" value={`$${deuda.montoInicial.toFixed(2)}`} />
           <DebtInfoRow label="Descripción" value={deuda.descripcion} />
         </div>
+        <div className="btn-container">
+          <button className="btn-default">Agregar Pago</button>
+        </div>
         <div className="add-payment-container">
-          <button className="add-payment-btn" onClick={() => setShowAddPaymentForm(true)}>Agregar Pago</button>
           {showAddPaymentForm && (
             <AddPaymentForm debtId={id} onClose={() => setShowAddPaymentForm(false)} />
           )}
