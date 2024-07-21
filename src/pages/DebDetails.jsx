@@ -59,6 +59,7 @@ const DebtDetails = () => {
               date={payment.fechaPago}
               amount={payment.montoPago}
               receiptImageUrl={payment.comprobante}
+              method={payment.metodoPago}
             />
           ))}
         </div>

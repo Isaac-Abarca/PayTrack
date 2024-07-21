@@ -40,6 +40,7 @@
   font-size: 1.125rem;
   font-weight: bold;
   text-align: center;
+  padding-bottom: 1rem;
 }
 
 .payment-item {
@@ -59,7 +60,34 @@
   gap: 1rem;
 }
 
-.payment-icon {
+
+
+.payment-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+
+.payment-date {
+  color: #2d3144;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.payment-amount {
+  color: #3c3f4a;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.payment-method{
+  color: #3c3f4a;
+  font-size: 0.8rem;
+  font-weight: normal;
+}
+
+.payment-img {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,24 +97,35 @@
   height: 3rem;
 }
 
-.payment-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.payment-date {
-  color: #1c1d22;
-  font-size: 1rem;
-  font-weight: medium;
-}
-
-.payment-amount {
-  color: #3c3f4a;
-  font-size: 0.875rem;
-  font-weight: normal;
-}
-
 .spacer {
   height: 1.25rem;
   background-color: #f9fafa;
 }
+
+
+/* src/styles/ImageModal.css */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.modal-image {
+  max-width: 100%;
+  height: 50%;
+}
+

@@ -23,7 +23,7 @@ const App = () => {
               <Route path="/home" element={<ProtectedRoute element={<Home />} />} />
               <Route path="/add-debt" element={<ProtectedRoute element={<AddDebt />} />} />
               <Route path="/debtdetails/:id" element={<ProtectedRoute element={<DebtDetails />} />} />
-              <Route path="/listdebts" element={<ProtectedRoute element={<ListDebts />} />} />
+              <Route path="/listdebs" element={<ProtectedRoute element={<ListDebts />} />} />
               <Route path="/debts/:id/payments" element={<ProtectedRoute element={<AddPaymentForm />} />} />
             </Routes>
           </div>

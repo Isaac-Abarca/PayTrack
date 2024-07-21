@@ -14,7 +14,7 @@ const NavBar = () => {
         <HomeIcon />
         {/** <p>Inicio</p>*/}
       </Link>
-      <Link to="/listdeb" className="nav-item inactive">
+      <Link to="/listdebs" className="nav-item inactive">
         <CreditCardIcon />
         {/**<p>Buscar</p> */}
       </Link>
