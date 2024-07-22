@@ -15,7 +15,11 @@ const Home = () => {
       setTotalAmount('0.00');
       setDebtCount(0);
     } else {
-      const total = deudas.reduce((sum, deuda) => sum + parseFloat(deuda.montoInicial), 0);
+      const total = deudas.reduce((sum, deuda) => {
+        const pagosTotal = deuda.pagos?.reduce((sumPagos, pago) => sumPagos + parseFloat(pago.montoPago), 0) || 0;
+        const montoActual = parseFloat(deuda.montoInicial) - pagosTotal;
+        return sum + montoActual;
+      }, 0);
       setTotalAmount(total.toFixed(2));
       setDebtCount(deudas.length);
     }
