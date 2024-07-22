@@ -12,6 +12,7 @@ const DebtDetails = () => {
   const { id } = useParams();
   const [deuda, setDeuda] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [montoActual, setMontoActual] = useState(0)
 
   useEffect(() => {
     const fetchDeuda = async () => {
@@ -30,6 +31,16 @@ const DebtDetails = () => {
     fetchDeuda();
   }, [id]);
 
+  useEffect(() => {
+    if (deuda) {
+      let totalMonto = 0;
+      deuda.pagos?.forEach(payment => {
+        totalMonto += payment.montoPago;
+      });
+      setMontoActual(totalMonto);
+    }
+  }, [deuda]);
+
   if (loading) {
     return <Loading />;
   }
@@ -45,7 +56,7 @@ const DebtDetails = () => {
           <DebtInfoRow label="Deudor" value={deuda.deudor} />
           <DebtInfoRow label="Acreedor" value={deuda.acreedor} />
           <DebtInfoRow label="Monto Inicial" value={`$${deuda.montoInicial.toFixed(2)}`} />
-          <DebtInfoRow label="Monto Actual" value={`$${deuda.montoInicial.toFixed(2)}`} />
+          <DebtInfoRow label="Monto Actual" value={`$${deuda.montoInicial - montoActual}`} />
           <DebtInfoRow label="Descripción" value={deuda.descripcion} />
         </div>
         <div className="btn-container">
