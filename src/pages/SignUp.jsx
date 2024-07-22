@@ -74,26 +74,32 @@ const SignUp = () => {
           <p>Contraseña</p>
           <div className="password-container">
             <input
+              className='password-signUp'
               type={showPassword ? 'text' : 'password'}
               placeholder="********"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <EyeIcon onClick={togglePasswordVisibility} />
+            <button type="button" className="login-password-toggle " onClick={togglePasswordVisibility}>
+              <EyeIcon show={showPassword} />
+            </button>
           </div>
         </label>
         <label>
           <p>Confirmar contraseña</p>
           <div className="password-container">
             <input
+              className='password-signUp'
               type={showPassword ? 'text' : 'password'}
               placeholder="********"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-            <EyeIcon onClick={togglePasswordVisibility} />
+            <button type="button" className="login-password-toggle " onClick={togglePasswordVisibility}>
+              <EyeIcon show={showPassword} />
+            </button>
           </div>
         </label>
         <button type="submit" className="signup-button">

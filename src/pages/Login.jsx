@@ -72,11 +72,11 @@ const Login = () => {
                 type={showPassword ? "text" : "password"}
                 id="password"
                 placeholder="**********"
-                className="login-input"
+                className="login-input password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button type="button" className="login-password-toggle" onClick={togglePasswordVisibility}>
+              <button type="button" className="login-password-toggle " onClick={togglePasswordVisibility}>
                 <EyeIcon show={showPassword} />
               </button>
             </div>

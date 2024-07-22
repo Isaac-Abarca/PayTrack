@@ -38,7 +38,7 @@
   font-weight: bold;
   padding: 1rem 1rem 0.75rem;
   margin: 0;
-  text-align: left;
+  text-align: center;
 }
 
 .signup-form {
@@ -74,12 +74,39 @@
   display: flex;
   align-items: center;
   border-radius: 12px;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid #d5d6dd;
+  background-color: #ffffff;
+  color: #1c1d22;
+  font-size: 1rem;
+
+  padding: 0 16px 0 0;
+}
+
+.password-container:focus{
+  border: 1px solid #d5d6dd;
 }
 
 .signup-form .password-container input {
-  border-radius: 12px 0 0 12px;
-  border-right: none;
+  border: none;
   flex: 1;
+}
+
+.password-signUp:focus{
+  border: none;
+  outline: none;
+}
+
+.password-signUp:-webkit-autofill,
+.password-signUp:-webkit-autofill:hover,
+.password-signUp:-webkit-autofill:focus {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: #000; /* Cambia este color según necesites */
 }
 
 .signup-form .password-container div {
