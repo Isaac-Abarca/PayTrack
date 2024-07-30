@@ -43,3 +43,46 @@
   font-weight: bold;
   line-height: 2rem;
 }
+/* src/styles/Home.css */
+
+.chart-container {
+  margin: 2rem 1rem;
+}
+
+.chart-container h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.debt-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 158px;
+  padding: 1.5rem;
+  border: 1px solid #d5d6dd;
+  border-radius: 0.75rem;
+  background-color: #fff;
+}
+
+.summary-title {
+  color: #1c1d22;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.summary-value {
+  color: #1c1d22;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 2rem;
+}
+

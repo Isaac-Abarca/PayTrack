@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-// src/contexts/DebtContext.js
+// src/contexts/DebtContext.jsx
 import { createContext, useContext, useState, useEffect } from 'react';
 import { collection, getDocs, onSnapshot, query, where } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
@@ -17,11 +17,11 @@ export const DebtProvider = ({ children }) => {
     const fetchDeudas = async () => {
       const q = query(collection(db, 'deudas'), where('userId', '==', currentUser.uid));
       const querySnapshot = await getDocs(q);
-      setDeudas(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+      setDeudas(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })) || []);
     };
 
     const unsubscribe = onSnapshot(query(collection(db, 'deudas'), where('userId', '==', currentUser.uid)), (snapshot) => {
-      setDeudas(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+      setDeudas(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })) || []);
     });
 
     fetchDeudas();
@@ -37,3 +37,4 @@ export const DebtProvider = ({ children }) => {
 };
 
 export const useDebts = () => useContext(DebtContext);
+
